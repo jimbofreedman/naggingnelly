@@ -19,8 +19,8 @@ jobs:
         with:
           channel: 'stable'
 
-      - name: Install Android SDK
-        uses: android-actions/setup-android@v3
+#      - name: Install Android SDK
+#        uses: android-actions/setup-android@v3
 
       - name: Install dependencies
         run: flutter pub get
@@ -28,7 +28,7 @@ jobs:
       - name: Decode keystore
         env:
           ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
-        run: echo $ANDROID_KEYSTORE_CONTENT | base64 -d  > android/keystore
+        run: echo {{ secrets.ANDROID_KEYSTORE_CONTENT }} | base64 --decode  > android/keystore
 
       - name: Build APK
         env:
