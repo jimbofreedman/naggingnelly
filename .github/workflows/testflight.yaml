@@ -33,6 +33,9 @@ jobs:
           ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
         run: base64 -d "ANDROID_KEYSTORE_CONTENT" > android/keystore
 
+      - name: printenv
+        run: env
+
       - name: Upload artifact to Firebase App Distribution
         uses: wzieba/Firebase-Distribution-Github-Action@v1
         env:
