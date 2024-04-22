@@ -13,12 +13,7 @@ jobs:
       - name: Decode keystore
         env:
           ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
-        run: echo $ANDROID_KEYSTORE_CONTENT | wc
-
-      - name: Decode keystore
-        env:
-          ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
-        run: echo $ANDROID_KEYSTORE_CONTENT | base64 -di  > android/keystore
+        run: echo $ANDROID_KEYSTORE_CONTENT | base64 -di  > android/app/keystore
 
       - name: Set up JDK
         uses: actions/setup-java@v1
@@ -28,9 +23,6 @@ jobs:
       - uses: subosito/flutter-action@v1
         with:
           channel: 'stable'
-
-#      - name: Install Android SDK
-#        uses: android-actions/setup-android@v3
 
       - name: Install dependencies
         run: flutter pub get
