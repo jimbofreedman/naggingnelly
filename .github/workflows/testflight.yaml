@@ -13,7 +13,12 @@ jobs:
       - name: Decode keystore
         env:
           ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
-        run: echo {{ secrets.ANDROID_KEYSTORE_CONTENT }} | base64 -di  > android/keystore
+        run: echo ${$ANDROID_KEYSTORE_CONTENT}
+
+      - name: Decode keystore
+        env:
+          ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
+        run: echo $ANDROID_KEYSTORE_CONTENT | base64 -di  > android/keystore
 
       - name: Set up JDK
         uses: actions/setup-java@v1
