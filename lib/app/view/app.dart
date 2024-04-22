@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:naggingnelly/counter/counter.dart';
+import 'package:naggingnelly/auth/view/auth_gate.dart';
 import 'package:naggingnelly/l10n/l10n.dart';
 
 class App extends StatelessWidget {
@@ -16,7 +16,7 @@ class App extends StatelessWidget {
       ),
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const CounterPage(),
+      home: const AuthGate(),
     );
   }
 }
