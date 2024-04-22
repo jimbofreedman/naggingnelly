@@ -52,8 +52,10 @@ class Todo {
     final raw = data['streakHistory'];
     final streakHistory = (raw != null)
         ? (raw as Map<dynamic, dynamic>).map(
-            (dynamic k, dynamic v) =>
-                MapEntry((k as Timestamp).toDate(), (v as Timestamp).toDate()),
+            (dynamic k, dynamic v) => MapEntry(
+              DateTime.parse(k as String),
+              (v as Timestamp).toDate(),
+            ),
           )
         : <DateTime, DateTime?>{};
 
@@ -84,7 +86,9 @@ class Todo {
       'dueAt': dueAt,
       'streak': streak,
       'streakSavers': streakSavers,
-      'streakHistory': streakHistory,
+      'streakHistory': streakHistory.map(
+        (k, v) => MapEntry(k.toIso8601String(), v),
+      ),
     };
   }
 
