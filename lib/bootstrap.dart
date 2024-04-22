@@ -25,11 +25,15 @@ class AppBlocObserver extends BlocObserver {
   }
 }
 
-Future<void> bootstrap(FutureOr<Widget> Function() builder) async {
+Future<void> bootstrap(
+  String firebaseProject,
+  FutureOr<Widget> Function() builder,
+) async {
   Bloc.observer = const AppBlocObserver();
 
   WidgetsFlutterBinding.ensureInitialized();
   await Firebase.initializeApp(
+    name: firebaseProject,
     options: DefaultFirebaseOptions.currentPlatform,
   );
 
