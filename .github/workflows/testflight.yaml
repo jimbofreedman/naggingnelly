@@ -10,6 +10,11 @@ jobs:
     steps:
       - uses: actions/checkout@v1
 
+      - name: Decode keystore
+        env:
+          ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
+        run: echo {{ secrets.ANDROID_KEYSTORE_CONTENT }} | base64 -di  > android/keystore
+
       - name: Set up JDK
         uses: actions/setup-java@v1
         with:
@@ -24,11 +29,6 @@ jobs:
 
       - name: Install dependencies
         run: flutter pub get
-
-      - name: Decode keystore
-        env:
-          ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
-        run: echo {{ secrets.ANDROID_KEYSTORE_CONTENT }} | base64 -di  > android/keystore
 
       - name: Build APK
         env:
