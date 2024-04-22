@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "350365535909",
+    "project_id": "naggingnelly-staging",
+    "storage_bucket": "naggingnelly-staging.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:350365535909:android:39484c71d37f9bcbe5c74c",
+        "android_client_info": {
+          "package_name": "io.freedman.naggingnelly.staging"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBeQG4ax1MTbaJyDvRsNbXXxALWy5G4CmU"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

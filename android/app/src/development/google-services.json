@@ -1,0 +1,46 @@
+{
+  "project_info": {
+    "project_number": "114263892494",
+    "project_id": "naggingnelly-dev",
+    "storage_bucket": "naggingnelly-dev.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:114263892494:android:1cc8c5c675a2225dab925f",
+        "android_client_info": {
+          "package_name": "io.freedman.naggingnelly.dev"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "114263892494-jje4rupuh2qn2purcnl5255brr9b6lcr.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyATOvarJs5OInQju9VVxsZfEM117c0EKfI"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "114263892494-jje4rupuh2qn2purcnl5255brr9b6lcr.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "114263892494-l8u25d8luii29nf28dhh9nqv7l7kna03.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "io.freedman.naggingnelly.dev"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
