@@ -13,7 +13,7 @@ jobs:
       - name: Decode keystore
         env:
           ANDROID_KEYSTORE_CONTENT: ${{ secrets.ANDROID_KEYSTORE_CONTENT }}
-        run: echo ${$ANDROID_KEYSTORE_CONTENT}
+        run: echo $ANDROID_KEYSTORE_CONTENT | wc
 
       - name: Decode keystore
         env:
