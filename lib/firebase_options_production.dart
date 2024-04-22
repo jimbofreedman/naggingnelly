@@ -31,7 +31,7 @@ class DefaultFirebaseOptions {
       case TargetPlatform.linux:
         throw UnsupportedError(
           'DefaultFirebaseOptions have not been configured for linux - '
-              'you can reconfigure this by running the FlutterFire CLI again.',
+          'you can reconfigure this by running the FlutterFire CLI again.',
         );
       default:
         throw UnsupportedError(
@@ -64,8 +64,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '52841464896',
     projectId: 'naggingnelly-prod',
     storageBucket: 'naggingnelly-prod.appspot.com',
-    androidClientId: '52841464896-7nb5rmj1lkk0csiiun3tpmv84389t7i8.apps.googleusercontent.com',
-    iosClientId: '52841464896-asrtqti0p06727j6776e31k6oeu7dger.apps.googleusercontent.com',
+    androidClientId:
+        '52841464896-7nb5rmj1lkk0csiiun3tpmv84389t7i8.apps.googleusercontent.com',
+    iosClientId:
+        '52841464896-asrtqti0p06727j6776e31k6oeu7dger.apps.googleusercontent.com',
     iosBundleId: 'io.freedman.naggingnelly.prod',
   );
 
@@ -75,8 +77,10 @@ class DefaultFirebaseOptions {
     messagingSenderId: '52841464896',
     projectId: 'naggingnelly-prod',
     storageBucket: 'naggingnelly-prod.appspot.com',
-    androidClientId: '52841464896-7nb5rmj1lkk0csiiun3tpmv84389t7i8.apps.googleusercontent.com',
-    iosClientId: '52841464896-4fpf3ni4lgcdqrb1va51q1u98lqs9n7v.apps.googleusercontent.com',
+    androidClientId:
+        '52841464896-7nb5rmj1lkk0csiiun3tpmv84389t7i8.apps.googleusercontent.com',
+    iosClientId:
+        '52841464896-4fpf3ni4lgcdqrb1va51q1u98lqs9n7v.apps.googleusercontent.com',
     iosBundleId: 'com.example.myApp',
   );
 

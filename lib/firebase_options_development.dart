@@ -64,7 +64,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '114263892494',
     projectId: 'naggingnelly-dev',
     storageBucket: 'naggingnelly-dev.appspot.com',
-    iosClientId: '114263892494-l8u25d8luii29nf28dhh9nqv7l7kna03.apps.googleusercontent.com',
+    iosClientId:
+        '114263892494-l8u25d8luii29nf28dhh9nqv7l7kna03.apps.googleusercontent.com',
     iosBundleId: 'io.freedman.naggingnelly.dev',
   );
 
@@ -74,7 +75,8 @@ class DefaultFirebaseOptions {
     messagingSenderId: '114263892494',
     projectId: 'naggingnelly-dev',
     storageBucket: 'naggingnelly-dev.appspot.com',
-    iosClientId: '114263892494-q4d2hpl65q1gaoinst2194g75ul8tqj0.apps.googleusercontent.com',
+    iosClientId:
+        '114263892494-q4d2hpl65q1gaoinst2194g75ul8tqj0.apps.googleusercontent.com',
     iosBundleId: 'com.example.myApp',
   );
 
@@ -87,5 +89,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'naggingnelly-dev.appspot.com',
     measurementId: 'G-5KZNESRKMG',
   );
-
 }

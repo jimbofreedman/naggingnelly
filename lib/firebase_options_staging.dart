@@ -85,5 +85,4 @@ class DefaultFirebaseOptions {
     storageBucket: 'naggingnelly-staging.appspot.com',
     measurementId: 'G-MMYYDBP0SV',
   );
-
 }
