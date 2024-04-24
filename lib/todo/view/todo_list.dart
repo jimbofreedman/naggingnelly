@@ -60,12 +60,35 @@ class _TodoListScreenState extends State<TodoListScreen> {
                           (DateTime.now().add(const Duration(days: 1))))
                       .isBefore(DateTime.now()),
                 )
-                .toList();
-            return ListView.builder(
+                .toList()
+              ..sort((a, b) => (a.order - b.order).ceil());
+
+            return ReorderableListView.builder(
+              onReorder: (int oldIndex, int newIndex) {
+                final todo = todos[oldIndex];
+
+                if (newIndex == 0) {
+                  todo.reorder(todos[newIndex].order - 1);
+                } else if (newIndex == todos.length) {
+                  todo.reorder(todos.last.order + 1);
+                } else {
+                  final task1 = todos[newIndex - 1];
+                  final task2 = todos[newIndex];
+
+                  final newOrder = (task1.order + task2.order) / 2;
+
+                  todo.reorder(
+                    newOrder != task1.order ? newOrder : task1.order + 1,
+                  );
+                }
+
+                todoBloc.add(UpdateTodo(todo));
+              },
               itemCount: todos.length,
               itemBuilder: (context, index) {
                 final todo = todos[index];
                 return ListTile(
+                  key: ValueKey(todo.id),
                   leading: ReorderableDragStartListener(
                     //<-- add this to leading
                     index: index,
@@ -73,7 +96,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                   ),
                   title: Text(todo.title),
                   subtitle: Text(
-                    "${todo.streak?.toString() ?? "0"} - "
+                    '${todo.streak} - '
                     "${todo.dueAt?.toString() ?? ""}",
                   ),
                   isThreeLine: true,
@@ -162,6 +185,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                 final todo = Todo(
                   id: const Uuid().toString(),
                   title: titleController.text,
+                  order: -1,
                   completed: false,
                   createdAt: DateTime.now(),
                   startAt: DateTime.parse('2024-04-22 04:00:00Z'),
