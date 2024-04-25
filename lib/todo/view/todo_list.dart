@@ -96,8 +96,9 @@ class _TodoListScreenState extends State<TodoListScreen> {
                   ),
                   title: Text(todo.title),
                   subtitle: Text(
-                    '${todo.streak} - '
-                    "${todo.dueAt?.toString() ?? ""}",
+                    "${todo.streak?.toString() ?? "0"} - "
+                    "${todo.dueAt?.toString() ?? ""} "
+                    '(${todo.order})',
                   ),
                   isThreeLine: true,
                   trailing: PopupMenuButton(
