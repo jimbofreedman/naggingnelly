@@ -73,7 +73,7 @@ class _TodoListScreenState extends State<TodoListScreen> {
                           .isBefore(DateTime.now()),
                 )
                 .toList()
-              ..sort((a, b) => (a.order - b.order).ceil());
+              ..sort((a, b) => a.order.compareTo(b.order));
 
             return ReorderableListView.builder(
               onReorder: (int oldIndex, int newIndex) {
