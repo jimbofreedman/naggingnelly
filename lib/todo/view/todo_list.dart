@@ -13,6 +13,8 @@ class TodoListScreen extends StatefulWidget {
 }
 
 class _TodoListScreenState extends State<TodoListScreen> {
+  bool _showUnstarted = false;
+
   @override
   void initState() {
     BlocProvider.of<TodoBloc>(context).add(LoadTodos());
@@ -26,6 +28,14 @@ class _TodoListScreenState extends State<TodoListScreen> {
       appBar: AppBar(
         title: const Text('Todo List'),
         actions: [
+          IconButton(
+            icon: const Icon(Icons.lock_clock),
+            onPressed: () {
+              setState(() {
+                _showUnstarted = !_showUnstarted;
+              });
+            },
+          ),
           IconButton(
             icon: const Icon(Icons.person),
             onPressed: () {
@@ -56,9 +66,11 @@ class _TodoListScreenState extends State<TodoListScreen> {
           } else if (state is TodoLoaded) {
             final todos = state.todos
                 .where(
-                  (Todo t) => (t.startAt ??
-                          (DateTime.now().add(const Duration(days: 1))))
-                      .isBefore(DateTime.now()),
+                  (Todo t) =>
+                      _showUnstarted ||
+                      (t.startAt ??
+                              (DateTime.now().add(const Duration(days: 1))))
+                          .isBefore(DateTime.now()),
                 )
                 .toList()
               ..sort((a, b) => (a.order - b.order).ceil());

@@ -20,6 +20,7 @@ dependencies:
   flutter_bloc: ^8.1.4
   flutter_localizations:
     sdk: flutter
+  global_configuration: ^2.0.0
   google_sign_in: ^6.2.1
   intl: ^0.18.1
   uuid: ^4.4.0
