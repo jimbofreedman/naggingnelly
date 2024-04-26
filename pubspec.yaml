@@ -1,6 +1,6 @@
 name: naggingnelly
 description: A PA for Procrastinators
-version: 0.0.1+6
+version: 0.0.1+7
 publish_to: none
 
 environment:
@@ -20,6 +20,7 @@ dependencies:
   flutter_bloc: ^8.1.4
   flutter_localizations:
     sdk: flutter
+  global_configuration: ^2.0.0
   google_sign_in: ^6.2.1
   intl: ^0.18.1
   uuid: ^4.4.0
@@ -39,3 +40,4 @@ flutter:
 
 dart_pre_commit:
   pull-up-dependencies: false
+  outdated: false

@@ -4,6 +4,7 @@ class Todo {
   Todo({
     required this.id,
     required this.title,
+    required this.order,
     required this.completed,
     required this.createdAt,
     required this.startAt,
@@ -14,6 +15,7 @@ class Todo {
   });
   String id;
   String title;
+  num order;
   bool completed;
   DateTime? createdAt;
   DateTime? startAt;
@@ -25,6 +27,7 @@ class Todo {
   Todo copyWith({
     String? id,
     String? title,
+    num? order,
     bool? completed,
     DateTime? createdAt,
     DateTime? startAt,
@@ -36,6 +39,7 @@ class Todo {
     return Todo(
       id: id ?? this.id,
       title: title ?? this.title,
+      order: order ?? this.order,
       completed: completed ?? this.completed,
       createdAt: createdAt ?? this.createdAt,
       startAt: startAt ?? this.startAt,
@@ -62,6 +66,7 @@ class Todo {
     return Todo(
       id: id,
       title: data['title'] as String,
+      order: (data['order'] ?? 0) as num,
       completed: data['completed'] as bool,
       createdAt: data['createdAt'] != null
           ? (data['createdAt'] as Timestamp).toDate()
@@ -80,6 +85,7 @@ class Todo {
   Map<String, dynamic> toJson() {
     return {
       'title': title,
+      'order': order,
       'completed': completed,
       'createdAt': createdAt,
       'startAt': startAt,
@@ -114,5 +120,10 @@ class Todo {
     streakHistory[startAt!] = null;
     startAt = startAt?.add(const Duration(days: 1));
     dueAt = dueAt?.add(const Duration(days: 1));
+  }
+
+  // ignore: use_setters_to_change_properties
+  void reorder(num newOrder) {
+    order = newOrder;
   }
 }
