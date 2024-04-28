@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:naggingnelly/home/view/home_page.dart';
+import 'package:naggingnelly/auth/view/auth_gate.dart';
 import 'package:naggingnelly/l10n/l10n.dart';
 import 'package:naggingnelly/theme/theme.dart';
 import 'package:todos_repository/todos_repository.dart';
@@ -29,7 +29,7 @@ class AppView extends StatelessWidget {
       darkTheme: FlutterTodosTheme.dark,
       localizationsDelegates: AppLocalizations.localizationsDelegates,
       supportedLocales: AppLocalizations.supportedLocales,
-      home: const HomePage(),
+      home: const AuthGate(),
     );
   }
 }
