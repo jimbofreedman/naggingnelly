@@ -3,7 +3,7 @@ import 'package:firebase_ui_auth/firebase_ui_auth.dart';
 import 'package:firebase_ui_oauth_google/firebase_ui_oauth_google.dart';
 import 'package:flutter/material.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:naggingnelly/todo/todo.dart';
+import 'package:naggingnelly/home/view/home_page.dart';
 
 class AuthGate extends StatelessWidget {
   const AuthGate({super.key});
@@ -23,7 +23,7 @@ class AuthGate extends StatelessWidget {
           );
         }
 
-        return const TodoListScreen();
+        return const HomePage();
       },
     );
   }
