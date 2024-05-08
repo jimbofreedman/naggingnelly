@@ -115,7 +115,14 @@ class TodosOverviewView extends StatelessWidget {
                       onDismissed: (_) {
                         context
                             .read<TodosOverviewBloc>()
-                            .add(TodosOverviewTodoDeleted(todo));
+                            .add(TodosOverviewTodoCompleted(todo: todo));
+                      },
+                      confirmDismiss: (_) async {
+                        context
+                            .read<TodosOverviewBloc>()
+                            .add(TodosOverviewTodoCompleted(todo: todo));
+                        // If item would still be visible, don't dismiss
+                        return !state.filter.apply(todo);
                       },
                       onTap: () {
                         Navigator.of(context).push(
