@@ -33,34 +33,45 @@ class TodoListTile extends StatelessWidget {
           color: Color(0xAAFFFFFF),
         ),
       ),
-      child: ListTile(
-        onTap: onTap,
-        title: Text(
-          todo.title,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-          style: !todo.isCompleted
-              ? null
-              : TextStyle(
-                  color: captionColor,
-                  decoration: TextDecoration.lineThrough,
-                ),
-        ),
-        subtitle: Text(
-          todo.description,
-          maxLines: 1,
-          overflow: TextOverflow.ellipsis,
-        ),
-        leading: Checkbox(
-          shape: const ContinuousRectangleBorder(
-            borderRadius: BorderRadius.all(Radius.circular(8)),
+      child: ExpansionTile(
+        title: ListTile(
+          onTap: onTap,
+          title: Text(
+            todo.title,
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+            style: !todo.isCompleted
+                ? null
+                : TextStyle(
+                    color: captionColor,
+                    decoration: TextDecoration.lineThrough,
+                  ),
           ),
-          value: todo.isCompleted,
-          onChanged: onToggleCompleted == null
-              ? null
-              : (value) => onToggleCompleted!(value!),
+          subtitle: Text(
+            "${todo.streak} - ${todo.dueAt?.toIso8601String() ?? 'none'}",
+            maxLines: 1,
+            overflow: TextOverflow.ellipsis,
+          ),
+          leading: Checkbox(
+            shape: const ContinuousRectangleBorder(
+              borderRadius: BorderRadius.all(Radius.circular(8)),
+            ),
+            value: todo.isCompleted,
+            onChanged: onToggleCompleted == null
+                ? null
+                : (value) => onToggleCompleted!(value!),
+          ),
+          trailing: onTap == null ? null : const Icon(Icons.chevron_right),
         ),
-        trailing: onTap == null ? null : const Icon(Icons.chevron_right),
+        children: <Widget>[
+          Text(todo.id ?? 'no id'),
+          Text(todo.description),
+          Text(todo.startAt.toString()),
+          Text(todo.dueAt.toString()),
+          Text(todo.streak.toString()),
+          Text(todo.streakSavers.toString()),
+          Text(todo.streakHistory.toString()),
+        ],
       ),
     );
   }

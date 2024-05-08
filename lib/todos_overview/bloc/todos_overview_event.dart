@@ -11,17 +11,15 @@ final class TodosOverviewSubscriptionRequested extends TodosOverviewEvent {
   const TodosOverviewSubscriptionRequested();
 }
 
-final class TodosOverviewTodoCompletionToggled extends TodosOverviewEvent {
-  const TodosOverviewTodoCompletionToggled({
+final class TodosOverviewTodoCompleted extends TodosOverviewEvent {
+  const TodosOverviewTodoCompleted({
     required this.todo,
-    required this.isCompleted,
   });
 
   final Todo todo;
-  final bool isCompleted;
 
   @override
-  List<Object> get props => [todo, isCompleted];
+  List<Object> get props => [todo];
 }
 
 final class TodosOverviewTodoDeleted extends TodosOverviewEvent {

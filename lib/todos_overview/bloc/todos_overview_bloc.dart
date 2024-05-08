@@ -12,7 +12,7 @@ class TodosOverviewBloc extends Bloc<TodosOverviewEvent, TodosOverviewState> {
   })  : _todosRepository = todosRepository,
         super(const TodosOverviewState()) {
     on<TodosOverviewSubscriptionRequested>(_onSubscriptionRequested);
-    on<TodosOverviewTodoCompletionToggled>(_onTodoCompletionToggled);
+    on<TodosOverviewTodoCompleted>(_onTodoCompleted);
     on<TodosOverviewTodoDeleted>(_onTodoDeleted);
     on<TodosOverviewUndoDeletionRequested>(_onUndoDeletionRequested);
     on<TodosOverviewFilterChanged>(_onFilterChanged);
@@ -34,17 +34,38 @@ class TodosOverviewBloc extends Bloc<TodosOverviewEvent, TodosOverviewState> {
         status: () => TodosOverviewStatus.success,
         todos: () => todos,
       ),
-      onError: (_, __) => state.copyWith(
-        status: () => TodosOverviewStatus.failure,
-      ),
+      // onError: (_, __) => state.copyWith(
+      //   status: () => TodosOverviewStatus.failure,
+      // ),
     );
   }
 
-  Future<void> _onTodoCompletionToggled(
-    TodosOverviewTodoCompletionToggled event,
+  Future<void> _onTodoCompleted(
+    TodosOverviewTodoCompleted event,
     Emitter<TodosOverviewState> emit,
   ) async {
-    final newTodo = event.todo.copyWith(isCompleted: event.isCompleted);
+    var streak = event.todo.streak;
+    var streakSavers = event.todo.streakSavers;
+    final streakHistory = event.todo.streakHistory;
+
+    if (event.todo.startAt != null && event.todo.dueAt != null) {
+      streak = (event.todo.streak ?? 0) + 1;
+      if (streak % 7 == 0) {
+        streakSavers = (event.todo.streakSavers ?? 0) + 1;
+      }
+      streakHistory[event.todo.startAt!] = DateTime.now();
+    }
+    final startAt = event.todo.startAt?.add(const Duration(days: 1));
+    final dueAt = event.todo.dueAt?.add(const Duration(days: 1));
+
+    final newTodo = event.todo.copyWith(
+      startAt: startAt,
+      dueAt: dueAt,
+      streak: streak,
+      streakSavers: streakSavers,
+      streakHistory: streakHistory,
+    );
+
     await _todosRepository.saveTodo(newTodo);
   }
 
@@ -53,7 +74,7 @@ class TodosOverviewBloc extends Bloc<TodosOverviewEvent, TodosOverviewState> {
     Emitter<TodosOverviewState> emit,
   ) async {
     emit(state.copyWith(lastDeletedTodo: () => event.todo));
-    await _todosRepository.deleteTodo(event.todo.id);
+    await _todosRepository.deleteTodo(event.todo.id!);
   }
 
   Future<void> _onUndoDeletionRequested(

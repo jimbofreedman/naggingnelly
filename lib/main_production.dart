@@ -2,9 +2,9 @@ import 'dart:ui';
 
 import 'package:firebase_core/firebase_core.dart';
 import 'package:firebase_crashlytics/firebase_crashlytics.dart';
+import 'package:firestore_todos_api/firestore_todos_api.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:global_configuration/global_configuration.dart';
-import 'package:local_storage_todos_api/local_storage_todos_api.dart';
 import 'package:naggingnelly/bootstrap.dart';
 import 'package:naggingnelly/firebase_options_development.dart';
 
@@ -30,9 +30,7 @@ Future<void> main() async {
     return true;
   };
 
-  final todosApi = LocalStorageTodosApi(
-    plugin: await SharedPreferences.getInstance(),
-  );
+  final todosApi = FirestoreTodosApi();
 
   GlobalConfiguration().loadFromMap(appSettings);
   return bootstrap(todosApi: todosApi);

@@ -99,9 +99,9 @@ void main() {
       test('makes correct api request', () {
         final subject = createSubject();
 
-        expect(subject.deleteTodo(todos[0].id), completes);
+        expect(subject.deleteTodo(todos[0].id!), completes);
 
-        verify(() => api.deleteTodo(todos[0].id)).called(1);
+        verify(() => api.deleteTodo(todos[0].id!)).called(1);
       });
     });
 

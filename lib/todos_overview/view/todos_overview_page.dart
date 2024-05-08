@@ -107,9 +107,8 @@ class TodosOverviewView extends StatelessWidget {
                       todo: todo,
                       onToggleCompleted: (isCompleted) {
                         context.read<TodosOverviewBloc>().add(
-                              TodosOverviewTodoCompletionToggled(
+                              TodosOverviewTodoCompleted(
                                 todo: todo,
-                                isCompleted: isCompleted,
                               ),
                             );
                       },

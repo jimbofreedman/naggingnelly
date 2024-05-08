@@ -137,7 +137,7 @@ void main() {
 
         final subject = createSubject();
 
-        expect(subject.deleteTodo(todos[0].id), completes);
+        expect(subject.deleteTodo(todos[0].id!), completes);
         expect(subject.getTodos(), emits(newTodos));
 
         verify(
