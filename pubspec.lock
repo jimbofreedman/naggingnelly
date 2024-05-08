@@ -41,6 +41,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "2.11.0"
+  badges:
+    dependency: "direct main"
+    description:
+      name: badges
+      sha256: a7b6bbd60dce418df0db3058b53f9d083c22cdb5132a052145dc267494df0b84
+      url: "https://pub.dev"
+    source: hosted
+    version: "3.1.2"
   bloc:
     dependency: "direct main"
     description:
@@ -524,6 +532,14 @@ packages:
       url: "https://pub.dev"
     source: hosted
     version: "4.0.2"
+  humanize_duration:
+    dependency: "direct main"
+    description:
+      name: humanize_duration
+      sha256: a9fb33b18d028aa2ffd1731af25f59cfcb3c1c2af673cf73fffc7f9a42b2f57e
+      url: "https://pub.dev"
+    source: hosted
+    version: "0.0.2"
   intl:
     dependency: "direct main"
     description:
